@@ -58,13 +58,13 @@ public class Main {
                     break;
                 case 3:
                     ra = JOptionPane.showInputDialog("Digite o RA");
-                    int index = 0;
+                    int index = -1;
                     for (Aluno a : cursoSelecionado.getAlunos()) {
                         if (a.getRa().equals(ra)) {
                             index = cursoSelecionado.getAlunos().indexOf(a);
                         }
                     }
-                    if (index > 0) {
+                    if (index > -1) {
                         cursoSelecionado.removerAluno(index);
                     }
                     break;
