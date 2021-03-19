@@ -21,7 +21,7 @@ public class Main {
         // TODO code application logic here
         int opc = 0;
         int cod, ch;
-        String nome;
+        String nome, ra,msg;
         ArrayList<Curso> listCurso = new ArrayList<>();
         Curso cursoSelecionado = null;
         while(opc != 6){
@@ -47,10 +47,31 @@ public class Main {
                     ch = Integer.parseInt(JOptionPane.showInputDialog("Carga Horária"));
                     listCurso.add(new Curso(cod, nome, ch));
                     break;
-                case 2: break;
-                case 3: break;
-                case 4: break;
-                case 5: break;
+                case 2: 
+                    ra = JOptionPane.showInputDialog("Ra");
+                    nome = JOptionPane.showInputDialog("Nome");
+                    cursoSelecionado.inserirAluno(new Aluno(ra, nome));
+                    break;
+                case 3: 
+                    ra = JOptionPane.showInputDialog("Digite o RA");
+                    int index = -1;
+                    for(Aluno a : cursoSelecionado.getAlunos()){
+                        if(a.getRa().equals(ra))
+                            index = cursoSelecionado.getAlunos().indexOf(a);
+                    }
+                    if(index >= 0)
+                        cursoSelecionado.removerAluno(index);
+                    break;
+                case 4: 
+                    msg = "";
+                    for(Curso c : listCurso){
+                        msg += c.imprimir() +"\n";
+                    }
+                    JOptionPane.showMessageDialog(null, msg);
+                    break;
+                case 5: 
+                    JOptionPane.showMessageDialog(null, cursoSelecionado.imprimirCompleto());
+                    break;
                 case 6: break;
                 default: break;
             }
