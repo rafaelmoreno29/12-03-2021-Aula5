@@ -21,3 +21,10 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+/ExemploContaBancaria/nbproject/private/
+/ExemploContaBancaria/build/
+/ExemploContaBancaria/dist/
+/Lista3Ex1N2/nbproject/private/
+/Lista3Ex1/nbproject/private/
+/Lista3Ex1/build/
+/Lista3Ex1/dist/
