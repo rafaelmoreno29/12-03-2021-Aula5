@@ -19,30 +19,32 @@ public class Main {
      */
     public static void main(String[] args) {
         int opc = 0;
-        int codigo,ch;
+        int codigo, ch;
         String nome, ra;
         ArrayList<Curso> listCurso = new ArrayList<>();
         Curso cursoSelecionado = null;
-        while(opc != 6){
+        while (opc != 6) {
             opc = Integer.parseInt(JOptionPane.showInputDialog("1 - Criar Curso\n"
                     + "2 - Criar Aluno\n"
                     + "3 - Remover Aluno\n"
                     + "4 - Mostrar todos os cursos\n"
                     + "5 - Mostrar alunos do curso\n"
                     + "6 - Sair"));
-            
-            if(opc == 2 || opc ==3 || opc == 5){
+
+            if (opc == 2 || opc == 3 || opc == 5) {
                 cursoSelecionado = null;
                 codigo = Integer.parseInt(JOptionPane.showInputDialog("Digite o código"));
-                for(Curso c : listCurso){
-                    if(c.getCodigo() == codigo)
+                for (Curso c : listCurso) {
+                    if (c.getCodigo() == codigo) {
                         cursoSelecionado = c;
+                    }
                 }
-                if(cursoSelecionado == null)
+                if (cursoSelecionado == null) {
                     continue;
+                }
             }
-            
-            switch(opc){
+
+            switch (opc) {
                 case 1:
                     codigo = Integer.parseInt(JOptionPane.showInputDialog("Código"));
                     nome = JOptionPane.showInputDialog("Nome");
@@ -56,16 +58,20 @@ public class Main {
                     break;
                 case 3:
                     ra = JOptionPane.showInputDialog("Digite o RA");
-                    for(Aluno a : cursoSelecionado.getAlunos()){
-                        if(a.getRa().equals(ra)){
-                            cursoSelecionado.removerAluno(cursoSelecionado.getAlunos().indexOf(a));
+                    int index = 0;
+                    for (Aluno a : cursoSelecionado.getAlunos()) {
+                        if (a.getRa().equals(ra)) {
+                            index = cursoSelecionado.getAlunos().indexOf(a);
                         }
+                    }
+                    if (index > 0) {
+                        cursoSelecionado.removerAluno(index);
                     }
                     break;
                 case 4:
                     String msg = "";
-                    for(Curso c : listCurso){
-                        msg += c.imprimir() +"\n";
+                    for (Curso c : listCurso) {
+                        msg += c.imprimir() + "\n";
                     }
                     JOptionPane.showMessageDialog(null, msg);
                     break;
@@ -79,5 +85,5 @@ public class Main {
             }
         }
     }
-    
+
 }
